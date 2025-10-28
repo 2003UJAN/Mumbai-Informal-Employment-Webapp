@@ -1,0 +1,11 @@
+,informal_employment_density,informal_employment_density,informal_employment_density,informal_employment_density,informal_employment_density,nightlight_intensity,nightlight_intensity,mobile_calls,mobile_calls,population,area_sqkm
+,mean,std,min,max,count,mean,std,mean,std,first,first
+area_name,,,,,,,,,,,
+Andheri East,23.5,10.81,5.0,48.98,180,43.52,34.49,1420.61,1141.69,180000,1.0
+Bandra East,23.16,11.46,5.0,47.72,120,41.35,32.79,1042.54,910.15,120000,0.6
+Dharavi,39.9,13.45,5.0,64.55,1000,75.12,31.45,11221.5,4807.21,1000000,2.39
+Govandi,21.86,11.46,5.0,53.76,250,38.57,33.54,1498.98,1374.0,250000,1.5
+Kurla,23.52,11.96,5.0,54.11,150,45.87,36.61,1244.56,1103.1,150000,0.8
+Malad,22.64,11.56,5.0,47.5,160,43.57,35.18,1310.74,1166.4,160000,0.9
+Mankhurd,21.17,11.44,5.0,51.07,200,40.44,32.77,1409.85,1175.04,200000,1.2
+Worli,23.79,11.7,5.0,56.98,100,46.73,34.2,824.35,849.05,100000,0.5
