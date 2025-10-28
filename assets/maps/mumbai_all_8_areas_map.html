@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cc17b6002987755d0df1714584b09a36 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 50px; right: 50px; width: 220px; 
+            background-color: white; border:2px solid grey; z-index:9999; 
+            font-size:14px; padding: 10px">
+    <p style="margin: 5px; font-weight: bold;">All 8 Mumbai Slum Areas</p>
+    <p style="margin: 5px;"><span style="color: red;">●</span> High (&gt;60)</p>
+    <p style="margin: 5px;"><span style="color: orange;">●</span> Medium (40-60)</p>
+    <p style="margin: 5px;"><span style="color: green;">●</span> Low (&lt;40)</p>
+</div>
+    
+            <div class="folium-map" id="map_cc17b6002987755d0df1714584b09a36" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cc17b6002987755d0df1714584b09a36 = L.map(
+                "map_cc17b6002987755d0df1714584b09a36",
+                {
+                    center: [19.076, 72.8777],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_788556685f6ef79e9ea19f22c72487ac = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_788556685f6ef79e9ea19f22c72487ac.addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+            var circle_marker_2e7a0fbd2fec150de46fd81e51006740 = L.circleMarker(
+                [19.0444, 72.856],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+        var popup_0ba9c00162d0da4c66f389e5a847f526 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_033b3806ab37961f6bf28cd9e11cd6c8 = $(`<div id="html_033b3806ab37961f6bf28cd9e11cd6c8" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h4 style="color: green; margin-bottom: 10px;">Dharavi</h4>         <p><b>Population:</b> 1,000,000</p>         <p><b>Area:</b> 2.39 sq.km</p>         <p><b>Density:</b> 418,410/sq.km</p>         <p><b>Informal Employment:</b> 39.9 workers/sq.km</p>         <p><b>Est. Workers:</b> 9,536</p>         <p><b>Main Sectors:</b> Leather & Textiles, Pottery & Crafts, Recycling</p>         <p style="font-size: 10px; color: gray;">Asia's largest slum with $1B+ annual informal economy turnover</p>     </div>     </div>`)[0];
+                popup_0ba9c00162d0da4c66f389e5a847f526.setContent(html_033b3806ab37961f6bf28cd9e11cd6c8);
+            
+        
+
+        circle_marker_2e7a0fbd2fec150de46fd81e51006740.bindPopup(popup_0ba9c00162d0da4c66f389e5a847f526)
+        ;
+
+        
+    
+    
+            var marker_df0050e7c2201e04513fd48bdf46d009 = L.marker(
+                [19.0444, 72.856],
+                {
+}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+            var div_icon_b27239a20c5774ed3e2cc270776cabf7 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"font-size: 10px; font-weight: bold; color: black; \n                        background-color: white; padding: 2px 5px; border-radius: 3px; \n                        border: 1px solid green;\"\u003e\n                Dharavi\n            \u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+                marker_df0050e7c2201e04513fd48bdf46d009.setIcon(div_icon_b27239a20c5774ed3e2cc270776cabf7);
+            
+    
+            var circle_marker_085d00d6adec042232ff8137dd2dd17f = L.circleMarker(
+                [19.0545, 72.9144],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+        var popup_bef053270799ba39a0da5019204893fc = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_788ea90439e3a99f3c1786d78c208af1 = $(`<div id="html_788ea90439e3a99f3c1786d78c208af1" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h4 style="color: green; margin-bottom: 10px;">Govandi</h4>         <p><b>Population:</b> 250,000</p>         <p><b>Area:</b> 1.5 sq.km</p>         <p><b>Density:</b> 166,667/sq.km</p>         <p><b>Informal Employment:</b> 21.9 workers/sq.km</p>         <p><b>Est. Workers:</b> 3,279</p>         <p><b>Main Sectors:</b> Recycling & Waste, Construction</p>         <p style="font-size: 10px; color: gray;">Major waste disposal area with informal recycling economy</p>     </div>     </div>`)[0];
+                popup_bef053270799ba39a0da5019204893fc.setContent(html_788ea90439e3a99f3c1786d78c208af1);
+            
+        
+
+        circle_marker_085d00d6adec042232ff8137dd2dd17f.bindPopup(popup_bef053270799ba39a0da5019204893fc)
+        ;
+
+        
+    
+    
+            var marker_7ebc23352ce76889b8d0d44738885055 = L.marker(
+                [19.0545, 72.9144],
+                {
+}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+            var div_icon_b133f9e2b5373fa5f339211c32bca4bc = L.divIcon({
+  "html": "\n            \u003cdiv style=\"font-size: 10px; font-weight: bold; color: black; \n                        background-color: white; padding: 2px 5px; border-radius: 3px; \n                        border: 1px solid green;\"\u003e\n                Govandi\n            \u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+                marker_7ebc23352ce76889b8d0d44738885055.setIcon(div_icon_b133f9e2b5373fa5f339211c32bca4bc);
+            
+    
+            var circle_marker_cbe10b98b2a775854f86d4303ac29f30 = L.circleMarker(
+                [19.0437, 72.9264],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+        var popup_0b45f741b34a808a148712b5bee8a811 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_11de46eed2165d0b22526eab4b90dd0b = $(`<div id="html_11de46eed2165d0b22526eab4b90dd0b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h4 style="color: green; margin-bottom: 10px;">Mankhurd</h4>         <p><b>Population:</b> 200,000</p>         <p><b>Area:</b> 1.2 sq.km</p>         <p><b>Density:</b> 166,667/sq.km</p>         <p><b>Informal Employment:</b> 21.2 workers/sq.km</p>         <p><b>Est. Workers:</b> 2,540</p>         <p><b>Main Sectors:</b> Manufacturing, Construction</p>         <p style="font-size: 10px; color: gray;">Industrial slum with manufacturing units</p>     </div>     </div>`)[0];
+                popup_0b45f741b34a808a148712b5bee8a811.setContent(html_11de46eed2165d0b22526eab4b90dd0b);
+            
+        
+
+        circle_marker_cbe10b98b2a775854f86d4303ac29f30.bindPopup(popup_0b45f741b34a808a148712b5bee8a811)
+        ;
+
+        
+    
+    
+            var marker_288d5826794143150a702dd6996f8d11 = L.marker(
+                [19.0437, 72.9264],
+                {
+}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+            var div_icon_f6de7718f493747deee8f02ee364d1b4 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"font-size: 10px; font-weight: bold; color: black; \n                        background-color: white; padding: 2px 5px; border-radius: 3px; \n                        border: 1px solid green;\"\u003e\n                Mankhurd\n            \u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+                marker_288d5826794143150a702dd6996f8d11.setIcon(div_icon_f6de7718f493747deee8f02ee364d1b4);
+            
+    
+            var circle_marker_a9f4f248854411feea3cb267e443bb5c = L.circleMarker(
+                [19.0728, 72.8826],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+        var popup_ca7927218f4a4ff3ae6600bbfec599f6 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6ddbd899111515e09010106bd36f1c4f = $(`<div id="html_6ddbd899111515e09010106bd36f1c4f" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h4 style="color: green; margin-bottom: 10px;">Kurla</h4>         <p><b>Population:</b> 150,000</p>         <p><b>Area:</b> 0.8 sq.km</p>         <p><b>Density:</b> 187,500/sq.km</p>         <p><b>Informal Employment:</b> 23.5 workers/sq.km</p>         <p><b>Est. Workers:</b> 1,881</p>         <p><b>Main Sectors:</b> Leather & Textiles, Manufacturing</p>         <p style="font-size: 10px; color: gray;">Textile and leather manufacturing hub</p>     </div>     </div>`)[0];
+                popup_ca7927218f4a4ff3ae6600bbfec599f6.setContent(html_6ddbd899111515e09010106bd36f1c4f);
+            
+        
+
+        circle_marker_a9f4f248854411feea3cb267e443bb5c.bindPopup(popup_ca7927218f4a4ff3ae6600bbfec599f6)
+        ;
+
+        
+    
+    
+            var marker_8eba2910a71ed24b0b54639e4ae396e7 = L.marker(
+                [19.0728, 72.8826],
+                {
+}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+            var div_icon_6b819257ba6d94f6d219666545d0358f = L.divIcon({
+  "html": "\n            \u003cdiv style=\"font-size: 10px; font-weight: bold; color: black; \n                        background-color: white; padding: 2px 5px; border-radius: 3px; \n                        border: 1px solid green;\"\u003e\n                Kurla\n            \u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+                marker_8eba2910a71ed24b0b54639e4ae396e7.setIcon(div_icon_6b819257ba6d94f6d219666545d0358f);
+            
+    
+            var circle_marker_9857c812b1ddc67a105dd12be19d9d23 = L.circleMarker(
+                [19.0596, 72.8428],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+        var popup_1a0ac5b6f2e5e2042ec3b7b7ccf839d2 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7e854f0218f7b3ecfcbcec2c7b0fef80 = $(`<div id="html_7e854f0218f7b3ecfcbcec2c7b0fef80" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h4 style="color: green; margin-bottom: 10px;">Bandra East</h4>         <p><b>Population:</b> 120,000</p>         <p><b>Area:</b> 0.6 sq.km</p>         <p><b>Density:</b> 200,000/sq.km</p>         <p><b>Informal Employment:</b> 23.2 workers/sq.km</p>         <p><b>Est. Workers:</b> 1,389</p>         <p><b>Main Sectors:</b> Domestic Services, Street Vendors</p>         <p style="font-size: 10px; color: gray;">Mixed informal economy near Bandra Kurla Complex</p>     </div>     </div>`)[0];
+                popup_1a0ac5b6f2e5e2042ec3b7b7ccf839d2.setContent(html_7e854f0218f7b3ecfcbcec2c7b0fef80);
+            
+        
+
+        circle_marker_9857c812b1ddc67a105dd12be19d9d23.bindPopup(popup_1a0ac5b6f2e5e2042ec3b7b7ccf839d2)
+        ;
+
+        
+    
+    
+            var marker_5563c2dcec8924314ecce0053f351035 = L.marker(
+                [19.0596, 72.8428],
+                {
+}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+            var div_icon_15b95bd38cc0eab802ef50209034b217 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"font-size: 10px; font-weight: bold; color: black; \n                        background-color: white; padding: 2px 5px; border-radius: 3px; \n                        border: 1px solid green;\"\u003e\n                Bandra East\n            \u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+                marker_5563c2dcec8924314ecce0053f351035.setIcon(div_icon_15b95bd38cc0eab802ef50209034b217);
+            
+    
+            var circle_marker_fb4377a1806a34123a59509ca082b812 = L.circleMarker(
+                [19.1136, 72.8697],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+        var popup_ee911ce24ebf8ec2235bea1382d0ffea = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0df7851a98279a2333f1bcf62abb05c9 = $(`<div id="html_0df7851a98279a2333f1bcf62abb05c9" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h4 style="color: green; margin-bottom: 10px;">Andheri East</h4>         <p><b>Population:</b> 180,000</p>         <p><b>Area:</b> 1.0 sq.km</p>         <p><b>Density:</b> 180,000/sq.km</p>         <p><b>Informal Employment:</b> 23.5 workers/sq.km</p>         <p><b>Est. Workers:</b> 2,349</p>         <p><b>Main Sectors:</b> Domestic Services, Street Vendors</p>         <p style="font-size: 10px; color: gray;">Slums near airport with service sector workers</p>     </div>     </div>`)[0];
+                popup_ee911ce24ebf8ec2235bea1382d0ffea.setContent(html_0df7851a98279a2333f1bcf62abb05c9);
+            
+        
+
+        circle_marker_fb4377a1806a34123a59509ca082b812.bindPopup(popup_ee911ce24ebf8ec2235bea1382d0ffea)
+        ;
+
+        
+    
+    
+            var marker_eee35883800b2c1448212239858ea126 = L.marker(
+                [19.1136, 72.8697],
+                {
+}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+            var div_icon_13f290a6e3c37612a9b9cbca5eb3a583 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"font-size: 10px; font-weight: bold; color: black; \n                        background-color: white; padding: 2px 5px; border-radius: 3px; \n                        border: 1px solid green;\"\u003e\n                Andheri East\n            \u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+                marker_eee35883800b2c1448212239858ea126.setIcon(div_icon_13f290a6e3c37612a9b9cbca5eb3a583);
+            
+    
+            var circle_marker_94b19f696b716b3b3984d6466621babb = L.circleMarker(
+                [19.0144, 72.8169],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+        var popup_4517710de11d8d1fde4fe71c54d8ce33 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_13f46a9134df58f565d26685bcd1664e = $(`<div id="html_13f46a9134df58f565d26685bcd1664e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h4 style="color: green; margin-bottom: 10px;">Worli</h4>         <p><b>Population:</b> 100,000</p>         <p><b>Area:</b> 0.5 sq.km</p>         <p><b>Density:</b> 200,000/sq.km</p>         <p><b>Informal Employment:</b> 23.8 workers/sq.km</p>         <p><b>Est. Workers:</b> 1,189</p>         <p><b>Main Sectors:</b> Construction, Street Vendors</p>         <p style="font-size: 10px; color: gray;">Fishing community and construction workers</p>     </div>     </div>`)[0];
+                popup_4517710de11d8d1fde4fe71c54d8ce33.setContent(html_13f46a9134df58f565d26685bcd1664e);
+            
+        
+
+        circle_marker_94b19f696b716b3b3984d6466621babb.bindPopup(popup_4517710de11d8d1fde4fe71c54d8ce33)
+        ;
+
+        
+    
+    
+            var marker_c8680d750dbfd44f1d2bc5d26ffed220 = L.marker(
+                [19.0144, 72.8169],
+                {
+}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+            var div_icon_11c559df7338fc69ffde4876c8376a9d = L.divIcon({
+  "html": "\n            \u003cdiv style=\"font-size: 10px; font-weight: bold; color: black; \n                        background-color: white; padding: 2px 5px; border-radius: 3px; \n                        border: 1px solid green;\"\u003e\n                Worli\n            \u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+                marker_c8680d750dbfd44f1d2bc5d26ffed220.setIcon(div_icon_11c559df7338fc69ffde4876c8376a9d);
+            
+    
+            var circle_marker_5e1aba5320c31d2489c80117d4ecb8cb = L.circleMarker(
+                [19.1864, 72.8479],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+        var popup_6c83dda615fcf56c8b445a0c3a138d2f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_8b6c3edfbcd5f86f907ad6e59667efa4 = $(`<div id="html_8b6c3edfbcd5f86f907ad6e59667efa4" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 300px;">         <h4 style="color: green; margin-bottom: 10px;">Malad</h4>         <p><b>Population:</b> 160,000</p>         <p><b>Area:</b> 0.9 sq.km</p>         <p><b>Density:</b> 177,778/sq.km</p>         <p><b>Informal Employment:</b> 22.6 workers/sq.km</p>         <p><b>Est. Workers:</b> 2,037</p>         <p><b>Main Sectors:</b> Domestic Services, Construction</p>         <p style="font-size: 10px; color: gray;">Suburban slum with domestic workers</p>     </div>     </div>`)[0];
+                popup_6c83dda615fcf56c8b445a0c3a138d2f.setContent(html_8b6c3edfbcd5f86f907ad6e59667efa4);
+            
+        
+
+        circle_marker_5e1aba5320c31d2489c80117d4ecb8cb.bindPopup(popup_6c83dda615fcf56c8b445a0c3a138d2f)
+        ;
+
+        
+    
+    
+            var marker_79cf78c8fac43b324521c1a00c384cd5 = L.marker(
+                [19.1864, 72.8479],
+                {
+}
+            ).addTo(map_cc17b6002987755d0df1714584b09a36);
+        
+    
+            var div_icon_e95fbb6e0f937ee7f01389ff43fe7665 = L.divIcon({
+  "html": "\n            \u003cdiv style=\"font-size: 10px; font-weight: bold; color: black; \n                        background-color: white; padding: 2px 5px; border-radius: 3px; \n                        border: 1px solid green;\"\u003e\n                Malad\n            \u003c/div\u003e\n        ",
+  "className": "empty",
+});
+        
+    
+                marker_79cf78c8fac43b324521c1a00c384cd5.setIcon(div_icon_e95fbb6e0f937ee7f01389ff43fe7665);
+            
+</script>
+</html>
