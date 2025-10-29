@@ -1,1 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-3">📊 Dashboard: Informal Employment Analysis</h2>
+
+<div id="chart_overlap" class="chart-container"></div>
+
+<script>
+    let statsData = {{ stats | tojson }};
+</script>
+
+<h3 class="mt-5">🌍 Region Map</h3>
+<iframe src="{{ url_for('static', filename='../assets/maps/mumbai_all_8_areas_map.html') }}"
+        width="100%" height="500px" style="border-radius:10px;"></iframe>
+
+{% endblock %}
 
