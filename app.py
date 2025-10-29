@@ -515,6 +515,16 @@ elif page == "🎯 ML Predictions":
 elif page == "🤖 AI Insights":
     st.markdown("### 🤖 AI-Powered Insights with Gemini 2.0 Flash Lite")
     
+    # Calculate metrics here (moved from ML Predictions page)
+    if predictions is not None:
+        r2 = 1 - (predictions['residual'].var() / predictions['actual'].var())
+        rmse = np.sqrt((predictions['residual']**2).mean())
+        mae = predictions['residual'].abs().mean()
+    else:
+        r2 = None
+        rmse = None
+        mae = None
+    
     if gemini_model:
         st.success("✅ Gemini 2.0 Flash Lite is ready to generate insights!")
         
@@ -567,35 +577,49 @@ elif page == "🤖 AI Insights":
                     TOP 3 AREAS BY EMPLOYMENT DENSITY:
                     {data.groupby('area_name')['informal_employment_density'].mean().sort_values(ascending=False).head(3).to_string()}
                     
-                    FEATURE IMPORTANCE:
-                    {feature_imp.to_string(index=False) if feature_imp is not None else 'Not available'}
+                    FEATURE IMPORTANCE (if available):
+                    {feature_imp.to_string(index=False) if feature_imp is not None else 'Feature importance data not available'}
                     
                     MODEL PERFORMANCE:
-                    - R² Score: {r2:.4f} if predictions is not None else 'N/A'
-                    - RMSE: {rmse:.2f} if predictions is not None else 'N/A'
                     """
+                    
+                    # Add model metrics only if available
+                    if r2 is not None:
+                        context += f"""
+                    - R² Score: {r2:.4f}
+                    - RMSE: {rmse:.2f}
+                    - MAE: {mae:.2f}
+                    - Model Type: Random Forest Regressor
+                        """
+                    else:
+                        context += """
+                    - Model metrics not available (predictions data missing)
+                        """
                     
                     # Create prompt based on insight type
                     if insight_type == "Quick Overview":
-                        prompt = f"{context}\n\nProvide a quick 3-point summary of the key findings."
+                        prompt = f"{context}\n\nProvide a quick 3-point summary of the key findings from this Mumbai informal employment data."
                     
                     elif insight_type == "Model Performance Analysis":
-                        prompt = f"{context}\n\nAnalyze the machine learning model's performance. What does the R² score tell us? Are there any concerns? Be technical but clear."
+                        if r2 is not None:
+                            prompt = f"{context}\n\nAnalyze the machine learning model's performance. What does the R² score of {r2:.4f} tell us? Are there any concerns? Be technical but clear."
+                        else:
+                            prompt = f"{context}\n\nThe model performance metrics are not available. Instead, analyze the data patterns and what factors might be important for predicting informal employment based on the feature importance data."
                     
                     elif insight_type == "Policy Recommendations":
-                        prompt = f"{context}\n\nProvide 5 specific, actionable policy recommendations for Mumbai authorities based on this data. Focus on practical interventions."
+                        prompt = f"{context}\n\nProvide 5 specific, actionable policy recommendations for Mumbai authorities based on this data. Focus on practical interventions that can help the 2.16 million people living in these slum areas."
                     
                     elif insight_type == "Area Prioritization":
-                        prompt = f"{context}\n\nRank the top 5 areas that need immediate intervention and explain why. Consider population, density, and employment patterns."
+                        prompt = f"{context}\n\nRank the top 5 areas that need immediate intervention and explain why. Consider population, density, and employment patterns. Be specific about what interventions each area needs."
                     
                     elif insight_type == "Economic Impact Assessment":
-                        prompt = f"{context}\n\nAssess the economic impact of informal employment in Mumbai. Estimate GDP contribution, tax implications, and economic multiplier effects."
+                        prompt = f"{context}\n\nAssess the economic impact of informal employment in these Mumbai slum areas. Estimate GDP contribution, tax implications, and economic multiplier effects. Provide specific numbers where possible."
                     
                     elif insight_type == "Custom Query" and custom_query:
-                        prompt = f"{context}\n\nUser Question: {custom_query}\n\nProvide a detailed, data-driven answer."
+                        prompt = f"{context}\n\nUser Question: {custom_query}\n\nProvide a detailed, data-driven answer based on the Mumbai informal employment dataset."
                     
                     else:
-                        prompt = f"{context}\n\nProvide a general analysis of the informal employment situation in Mumbai."
+                        prompt = f"{context}\n\nProvide a comprehensive analysis of the informal employment situation in Mumbai's 8 major slum areas."
                     
                     # Call Gemini 2.0 Flash Lite
                     response = gemini_model.generate_content(prompt)
@@ -611,6 +635,7 @@ elif page == "🤖 AI Insights":
                     """, unsafe_allow_html=True)
                     
                     # Save option
+                    st.markdown("---")
                     col1, col2, col3 = st.columns([1, 1, 1])
                     
                     with col2:
@@ -626,37 +651,56 @@ elif page == "🤖 AI Insights":
                                 f.write(response.text)
                             
                             st.success(f"✅ Insights saved to {filename}")
+                            st.download_button(
+                                label="📥 Download Insights",
+                                data=response.text,
+                                file_name=filename,
+                                mime="text/plain"
+                            )
                 
                 except Exception as e:
                     st.error(f"❌ Error generating insights: {e}")
-                    st.info("💡 Make sure your GEMINI_API_KEY is correctly configured")
+                    st.info("💡 Make sure your GEMINI_API_KEY is correctly configured in `.streamlit/secrets.toml`")
+                    
+                    # Show detailed error for debugging
+                    with st.expander("🔍 Debug Information"):
+                        st.code(str(e))
     
     else:
         st.warning("⚠️ Gemini AI not configured")
+        
         st.info("""
         **To enable Gemini 2.0 Flash Lite:**
         
-        1. Get API key from: https://aistudio.google.com/app/apikey
-        2. Add to `.streamlit/secrets.toml`:
-           ```
-           GEMINI_API_KEY = "your-api-key-here"
-           ```
-        3. Restart the application
+        1. **Get API key** from: https://aistudio.google.com/app/apikey
+        
+        2. **Create** `.streamlit/secrets.toml` file in your project:
+        
+        ```
+        GEMINI_API_KEY = "your-api-key-here"
+        ```
+        
+        3. **Restart** the Streamlit application
+        
+        4. **Verify** API key is correct and has proper permissions
         """)
         
         # Show pre-saved insights if available
+        st.markdown("---")
+        st.markdown("### 📄 Pre-saved Insights (Demo)")
+        
         try:
             with open('data/gemini_insights_all_areas.txt', 'r', encoding='utf-8') as f:
                 saved_insights = f.read()
             
-            st.markdown("---")
-            st.markdown("### 📄 Pre-saved Insights")
-            with st.expander("View Saved Insights", expanded=True):
+            with st.expander("View Previously Generated Insights", expanded=True):
                 st.text(saved_insights)
         
-        except:
-            st.info("No pre-saved insights available")
-
+        except FileNotFoundError:
+            st.info("ℹ️ No pre-saved insights available. Generate new insights once Gemini API is configured.")
+        
+        except Exception as e:
+            st.warning(f"Could not load pre-saved insights: {e}")
 # ============================================
 # FOOTER
 # ============================================
