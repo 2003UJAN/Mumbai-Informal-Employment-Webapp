@@ -1,9 +1,8 @@
 flask
 gunicorn
-pandas
-numpy
-plotly
-python-dotenv
 google-generativeai
-scikit-learn
-jinja2
+python-dotenv
+pandas
+plotly
+folium
+streamlit
