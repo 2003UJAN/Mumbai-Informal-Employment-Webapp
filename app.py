@@ -320,10 +320,10 @@ elif page == "🗺️ Interactive Map":
             avg_nightlight = area_data['nightlight_intensity'].mean()
             avg_mobile = area_data['mobile_calls'].mean()
             
-            if avg_employment > 60:
+            if avg_employment > 30:
                 color = '#FF4B4B'
                 status = "High"
-            elif avg_employment > 40:
+            elif avg_employment > 10:
                 color = '#FFA500'
                 status = "Medium"
             else:
@@ -375,11 +375,11 @@ elif page == "🗺️ Interactive Map":
     st.markdown("---")
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.markdown("🔴 **High**: >60 workers/km²")
+        st.markdown("🔴 **High**: >30 workers/km²")
     with col2:
-        st.markdown("🟠 **Medium**: 40-60 workers/km²")
+        st.markdown("🟠 **Medium**: 10-30 workers/km²")
     with col3:
-        st.markdown("🟢 **Low**: <40 workers/km²")
+        st.markdown("🟢 **Low**: <10 workers/km²")
 
 # ============================================
 # PAGE 3: ML PREDICTIONS
