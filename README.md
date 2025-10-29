@@ -50,10 +50,6 @@ The dataset includes:
 | RMSE | 3.2 |
 | MAE | 2.1 |
 
-## 🎓 Research Paper
-
-This project is based on the research paper:
-> "Geospatial Econometrics of Informal Employment in Urban Slums"
 
 **Authors**: Ujan Pradhan (SRMIST Chennai) , Vyomika Anand (IIT Bombay) & Navya Singhal (NTU Singapore)
 
