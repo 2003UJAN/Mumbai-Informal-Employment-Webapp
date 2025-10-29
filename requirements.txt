@@ -1,8 +1,8 @@
-flask
+Flask
 gunicorn
 google-generativeai
-python-dotenv
 pandas
+numpy
+scikit-learn
 plotly
 folium
-streamlit
