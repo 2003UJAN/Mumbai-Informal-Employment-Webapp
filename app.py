@@ -359,9 +359,9 @@ elif page == "🗺️ Interactive Map":
                 folium.Marker(
                     location=area_info['coords'],
                     icon=folium.DivIcon(html=f"""
-                        <div style="font-size: 11px; font-weight: bold; color: white; 
+                        <div style="font-size: 11px; font-weight: bold; color: black; 
                                     background-color: {color}; padding: 5px 10px; 
-                                    border-radius: 5px; border: 2px solid white;
+                                    border-radius: 5px; border: 2px solid black;
                                     box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
                             {area_name}
                         </div>
