@@ -38,24 +38,26 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        data = pd.read_csv('mumbai_all_8_areas_data.csv')
-        stats = pd.read_csv('mumbai_all_areas_statistics.csv')
-        predictions = pd.read_csv('mumbai_all_areas_predictions.csv')
-        feature_imp = pd.read_csv('mumbai_feature_importance.csv')
+        data = pd.read_csv('data/mumbai_all_8_areas_data.csv')
+        stats = pd.read_csv('data/mumbai_all_areas_statistics.csv')
+        predictions = pd.read_csv('data/mumbai_all_areas_predictions.csv')
+        feature_imp = pd.read_csv('data/mumbai_feature_importance.csv')
         return data, stats, predictions, feature_imp
     except Exception as e:
         st.error(f"Error loading data: {e}")
+        st.info("📁 Please ensure CSV files are in the 'data/' folder")
         return None, None, None, None
 
 # Load model
 @st.cache_resource
 def load_model():
     try:
-        with open('mumbai_rf_model_all_areas.pkl', 'rb') as f:
+        with open('models/mumbai_rf_model_all_areas.pkl', 'rb') as f:
             model = pickle.load(f)
         return model
     except Exception as e:
         st.warning(f"Model not loaded: {e}")
+        st.info("📁 Please ensure model file is in the 'models/' folder")
         return None
 
 # Title
