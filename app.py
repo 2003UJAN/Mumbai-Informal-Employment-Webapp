@@ -1,3 +1,5 @@
+from flask import Flask
+app = Flask(__name__)
 from flask import Flask, render_template, request
 import pandas as pd
 import pickle
