@@ -1,6 +1,7 @@
 from flask import Flask, render_template, send_from_directory
 import pandas as pd
 import os
+import pickle
 
 app = Flask(__name__)
 
@@ -29,9 +30,23 @@ def dashboard():
 def dashboard_alias():
     return render_template("dashboard.html", stats=stats)
 
-@app.route("/predict")
-def predictions():
-    return render_template("predictions.html")
+@app.route("/predict", methods=["POST"])
+def predict():
+    try:
+        input_data = {
+            "population": float(request.form["population"]),
+            "nightlight_intensity": float(request.form["nightlight_intensity"]),
+            "area_size": float(request.form["area_size"]),
+        }
+
+        df = pd.DataFrame([input_data])
+
+        prediction = model.predict(df)[0]
+
+        return render_template("predictions.html", prediction=prediction)
+
+    except Exception as e:
+        return render_template("predictions.html", error=str(e))
 
 @app.route("/insights")
 def insights():
