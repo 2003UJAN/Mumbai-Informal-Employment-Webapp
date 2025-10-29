@@ -666,7 +666,6 @@ st.markdown("""
 <div style="text-align: center; padding: 2rem; opacity: 0.7;">
     <p><b>Mumbai Informal Employment GeoAI Platform</b></p>
     <p>Developed by Ujan Pradhan, Vyomika Anand & Navya Singhal</p>
-    <p>SRM Institute of Science & Technology | IIT Bombay</p>
     <p style="margin-top: 1rem;">
         <a href="https://github.com/2003UJAN/Mumbai-Informal-Employment-Webapp" target="_blank">GitHub</a> | 
         <a href="mailto:up0625@srmist.edu.in">Contact</a>
